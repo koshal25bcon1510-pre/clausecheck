@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>ClauseCheck AI – Understand Before You Agree</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Noto+Sans+Devanagari:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F8FAFC;--card:#fff;--tx:#243047;--mu:#66728a;--bl:#A5C8F5;--lv:#DCD6FF;--mn:#B8E6D0;--or:#FFD6A5;--rd:#FFB4B4;--bd:#e3e9f3;--hi:#c0392b;--me:#b8691a;--lo:#2f8f63;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#141a26;--card:#1c2433;--tx:#e6ecf7;--mu:#97a3ba;--bd:#2b3549;--hi:#ff8f8f;--me:#ffbf80;--lo:#7fd6ae}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#141a26;--card:#1c2433;--tx:#e6ecf7;--mu:#97a3ba;--bd:#2b3549;--hi:#ff8f8f;--me:#ffbf80;--lo:#7fd6ae}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 Inter,"Noto Sans Devanagari",system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,"Noto Sans Devanagari",Georgia,serif;line-height:1.15;margin:0 0 .5em}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:.65em 1.1em;background:var(--bl);color:#243047;font-weight:600;transition:transform .15s,box-shadow .15s}
+button:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(80,110,160,.2)}button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #6f9fe0;outline-offset:2px}
+button.g{background:transparent;border:1px solid var(--bd);color:var(--tx)}button.on{background:var(--lv)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;padding:.7rem 1.2rem;background:var(--card);border-bottom:1px solid var(--bd)}
+nav b{font-family:Fraunces,serif;font-size:1.2rem;margin-right:auto}nav button{padding:.45em .9em}
+main{max-width:1000px;margin:0 auto;padding:1.5rem 1.2rem 4rem}
+.hero{padding:3rem 0 2rem;max-width:720px}.hero h1{font-size:clamp(2rem,6vw,3.4rem)}.hero p{color:var(--mu);font-size:1.1rem}
+.row{display:flex;gap:.6rem;flex-wrap:wrap}.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:1.1rem;box-shadow:0 4px 18px rgba(60,90,140,.07)}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+textarea{width:100%;min-height:170px;border:1px solid var(--bd);border-radius:14px;padding:.8rem;font:inherit;background:var(--card);color:var(--tx);resize:vertical}
+.big{font:700 2.6rem Fraunces,serif}.mu{color:var(--mu)}.sm{font-size:.88rem}
+.pill{display:inline-block;padding:.1em .7em;border-radius:99px;font-size:.8rem;font-weight:600;color:#243047}
+.H{background:var(--rd)}.M{background:var(--or)}.L{background:var(--mn)}
+.cl{border-left:6px solid var(--bd);margin:.8rem 0}.cl.H{border-color:var(--rd);background:var(--card)}.cl.M{border-color:var(--or);background:var(--card)}.cl.L{border-color:var(--mn);background:var(--card)}
+blockquote{margin:.5rem 0;padding:.5rem .8rem;background:var(--bg);border-radius:10px;font-style:italic}
+.bar{display:flex;align-items:center;gap:.6rem;margin:.35rem 0;cursor:pointer;width:100%;background:none;padding:.2em;border-radius:8px;text-align:left;color:var(--tx);font-weight:500}.bar i{display:block;height:14px;border-radius:7px;background:var(--bl);transition:width .6s}
+.bar span:first-child{width:150px;flex:none}.bar.on{background:var(--lv)}
+.pie{width:140px;height:140px;border-radius:50%;margin:auto;transition:background .5s}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}@media(max-width:640px){.cols{grid-template-columns:1fr}}
+ins{background:var(--or);color:#243047;text-decoration:none;border-radius:3px;padding:0 2px}del{background:var(--rd);color:#243047;border-radius:3px;padding:0 2px}
+.add{border-color:var(--rd)}.mod{border-color:var(--or)}.rem{border-color:var(--mn)}
+.scan{height:6px;border-radius:4px;background:linear-gradient(90deg,var(--bl),var(--lv),var(--mn),var(--bl));background-size:200%;animation:s 1s linear infinite}@keyframes s{to{background-position:-200% 0}}
+.shield{font-size:3rem;display:inline-block;animation:f 3s ease-in-out infinite}@keyframes f{50%{transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+footer{margin-top:2rem}[hidden]{display:none!important}
+</style></head><body>
+<nav id="nav"></nav><main id="app"></main>
+<script>
+const D={
+en:{brand:"ClauseCheck AI",home:"Home",an:"Analyze",cmp:"Compare",h1:"Don’t accept what you don’t understand.",sub:"Find hidden risks in apps, websites and legal documents. Paste the text, get a plain-language report.",b1:"Analyze your document",b2:"Compare policies",b3:"How it works",how:["Paste or upload a .txt file","Each clause is scanned for 11 risk types","Read the result in English or simple Hindi"],
+paste:"Paste Terms & Conditions or a privacy policy",upload:"Upload .txt",pdfn:"PDF, DOCX, OCR and URL import need the server version. Paste the text for now.",sample:"Load sample",go:"Analyze",score:"Risk score",clauses:"Clauses flagged",hi:"High",me:"Medium",lo:"Low",cats:"Risk categories (click to filter)",all:"Show all",top:"Top dangerous clauses",orig:"Original clause",lvl:"Risk level",ref:"Where",action:"What to do",simple:"Simple Hindi explanations",empty:"Nothing flagged. The text may not contain these clause types.",none:"Paste some text first.",
+old:"Old version",new:"New version",cgo:"Compare",added:"Added",removed:"Removed",modified:"Modified",chg:"Risk change",up:"Risk increased",down:"Risk decreased",same:"No clear change",oldS:"Old risk score",newS:"New risk score",hexp:"Explain what changed in simple Hindi",hexpOn:"Showing Hindi explanations",sum:"Summary",newHigh:"New high-risk clauses",reduced:"Reduced risks",unc:"Matching is by wording similarity and keyword rules, not full legal understanding. Check highlighted pairs yourself.",
+disc:"ClauseCheck AI is a keyword-based demo. It does not replace professional legal advice. Text stays in your browser; nothing is uploaded.",section:"Paragraph",ex:"Explanation",why:"Why it matters"},
+hi:{brand:"क्लॉज़चेक AI",home:"होम",an:"विश्लेषण",cmp:"तुलना",h1:"बिना समझे किसी भी Terms & Conditions को Accept न करें।",sub:"ऐप, वेबसाइट और कानूनी दस्तावेज़ों में छिपे जोखिम पहचानें। टेक्स्ट पेस्ट करें और आसान भाषा में रिपोर्ट पाएँ।",b1:"अपना दस्तावेज़ जाँचें",b2:"पॉलिसी की तुलना करें",b3:"यह कैसे काम करता है",how:["टेक्स्ट पेस्ट करें या .txt फ़ाइल डालें","हर क्लॉज़ को 11 तरह के जोखिमों के लिए जाँचा जाता है","नतीजा अंग्रेज़ी या आसान हिंदी में पढ़ें"],
+paste:"Terms & Conditions या प्राइवेसी पॉलिसी यहाँ पेस्ट करें",upload:".txt अपलोड करें",pdfn:"PDF, DOCX, OCR और URL के लिए सर्वर वाला वर्शन चाहिए। अभी टेक्स्ट पेस्ट करें।",sample:"नमूना डालें",go:"जाँचें",score:"जोखिम स्कोर",clauses:"चिह्नित क्लॉज़",hi:"ज़्यादा",me:"मध्यम",lo:"कम",cats:"जोखिम की श्रेणियाँ (फ़िल्टर के लिए क्लिक करें)",all:"सब दिखाएँ",top:"सबसे खतरनाक क्लॉज़",orig:"मूल क्लॉज़",lvl:"जोखिम स्तर",ref:"कहाँ",action:"क्या करें",simple:"आसान हिंदी में समझें",empty:"कुछ भी चिह्नित नहीं हुआ। हो सकता है इस टेक्स्ट में ऐसे क्लॉज़ न हों।",none:"पहले कुछ टेक्स्ट पेस्ट करें।",
+old:"पुराना वर्शन",new:"नया वर्शन",cgo:"तुलना करें",added:"जुड़े",removed:"हटे",modified:"बदले",chg:"जोखिम में बदलाव",up:"जोखिम बढ़ा है",down:"जोखिम घटा है",same:"कोई साफ़ बदलाव नहीं",oldS:"पुराना जोखिम स्कोर",newS:"नया जोखिम स्कोर",hexp:"क्या बदला, आसान हिंदी में समझें",hexpOn:"हिंदी व्याख्या दिख रही है",sum:"सारांश",newHigh:"नए ज़्यादा-जोखिम वाले क्लॉज़",reduced:"घटे हुए जोखिम",unc:"मिलान शब्दों की समानता और कीवर्ड नियमों से होता है, पूरी कानूनी समझ से नहीं। हाइलाइट किए जोड़े खुद जाँचें।",
+disc:"ClauseCheck AI कीवर्ड पर आधारित डेमो है। यह पेशेवर कानूनी सलाह का विकल्प नहीं है। टेक्स्ट आपके ब्राउज़र में ही रहता है; कुछ अपलोड नहीं होता।",section:"पैराग्राफ",ex:"व्याख्या",why:"यह क्यों मायने रखता है"}};
+const C=[
+{id:"share",l:"H",re:/third[- ]part|advertis|\bpartners?\b|\bsell\b|\bsold\b|affiliates/i,n:["Third-party data sharing","तीसरे पक्ष के साथ डेटा साझा"],x:["Your personal information may go to other companies, often for advertising. Once shared, you lose control of it.","यह ऐप आपकी व्यक्तिगत जानकारी दूसरी कंपनियों या थर्ड पार्टी के साथ साझा कर सकता है। एक बार साझा होने पर उस पर आपका नियंत्रण नहीं रहता।"],a:["Look for an opt-out in privacy settings.","प्राइवेसी सेटिंग में ऑप्ट-आउट का विकल्प देखें।"]},
+{id:"loc",l:"M",re:/location|gps|geolocation/i,n:["Location tracking","लोकेशन ट्रैकिंग"],x:["The service can learn where you are, and maybe where you go every day.","सेवा जान सकती है कि आप कहाँ हैं, और शायद रोज़ कहाँ जाते हैं।"],a:["Allow location only while using the app.","लोकेशन की अनुमति सिर्फ़ ऐप इस्तेमाल करते समय दें।"]},
+{id:"cam",l:"H",re:/camera|microphone|\bmic\b|audio record|voice data/i,n:["Camera / microphone","कैमरा / माइक्रोफ़ोन"],x:["The app may use your camera or microphone, which can capture private moments.","ऐप आपका कैमरा या माइक्रोफ़ोन इस्तेमाल कर सकता है, जिससे निजी बातें रिकॉर्ड हो सकती हैं।"],a:["Deny permission unless a feature really needs it.","जब तक ज़रूरी न हो, अनुमति न दें।"]},
+{id:"ren",l:"H",re:/auto(matic(ally)?)?[- ]renew|recurring|subscription|billed (monthly|annually)|free trial/i,n:["Subscription / auto-renewal","सब्सक्रिप्शन / ऑटो-रिन्यूअल"],x:["You may be charged again and again until you cancel.","जब तक आप रद्द नहीं करते, आपसे बार-बार पैसे कट सकते हैं।"],a:["Set a reminder and note the cancel steps.","रिमाइंडर लगाएँ और रद्द करने का तरीका नोट करें।"]},
+{id:"ref",l:"M",re:/non-?refundable|no refunds?|refund|cancell?ation fee|cancel(l)?ation/i,n:["Refund / cancellation limits","रिफ़ंड / रद्दीकरण की सीमाएँ"],x:["Getting your money back or cancelling may be limited or have a fee.","पैसे वापस पाना या रद्द करना सीमित हो सकता है या उस पर शुल्क लग सकता है।"],a:["Read the refund window before paying.","भुगतान से पहले रिफ़ंड की अवधि पढ़ें।"]},
+{id:"sus",l:"M",re:/suspend|terminate|deactivate|close your account|delete your account/i,n:["Account suspension","अकाउंट सस्पेंड / बंद"],x:["The company can lock or close your account, sometimes without notice.","कंपनी आपका अकाउंट बंद कर सकती है, कभी-कभी बिना बताए।"],a:["Back up your data regularly.","अपना डेटा नियमित बैकअप करें।"]},
+{id:"own",l:"M",re:/licen[sc]e to .*(content|use)|irrevocable|royalty-free|worldwide license|you grant us/i,n:["Content ownership / license","कंटेंट का स्वामित्व / लाइसेंस"],x:["You give the company wide rights to use what you post, such as photos and text.","आप जो पोस्ट करते हैं (फ़ोटो, टेक्स्ट), उसे इस्तेमाल करने के बड़े अधिकार कंपनी को मिल जाते हैं।"],a:["Avoid uploading private or original work you want to control.","निजी या अपना मूल काम अपलोड करने से बचें।"]},
+{id:"arb",l:"H",re:/arbitration|class action|waive.*(right|jury)|jurisdiction|governing law/i,n:["Arbitration / disputes","आर्बिट्रेशन / विवाद"],x:["You may not be able to go to court or join a group lawsuit.","हो सकता है आप अदालत न जा सकें या समूह में केस न कर सकें।"],a:["Know this before a dispute; consider an opt-out if offered.","विवाद से पहले यह जान लें; विकल्प हो तो ऑप्ट-आउट देखें।"]},
+{id:"lia",l:"M",re:/limitation of liability|not (be )?liable|no liability|as is|disclaim|indemnif/i,n:["Limitation of liability","ज़िम्मेदारी की सीमा"],x:["If something goes wrong, the company may owe you little or nothing.","कुछ गलत होने पर कंपनी आपको बहुत कम या कुछ नहीं दे सकती।"],a:["Do not rely on the service for critical needs.","ज़रूरी कामों के लिए सेवा पर पूरी तरह निर्भर न रहें।"]},
+{id:"col",l:"M",re:/collect(s|ed)?\b.*(information|data|device|contacts)|personal information|browsing history|cookies|track/i,n:["Data collection","डेटा संग्रह"],x:["The company gathers information about you and how you use the service.","कंपनी आपके और आपके इस्तेमाल के बारे में जानकारी इकट्ठा करती है।"],a:["Review what is collected and limit it in settings.","देखें क्या इकट्ठा होता है और सेटिंग में सीमित करें।"]},
+{id:"rst",l:"L",re:/you (may|must|shall) not|prohibited|reverse engineer|unlawful use|restrict/i,n:["User restrictions","उपयोगकर्ता पर पाबंदियाँ"],x:["There are rules on what you may do. Breaking them can end your access.","आप क्या कर सकते हैं इस पर नियम हैं। तोड़ने पर आपकी पहुँच खत्म हो सकती है।"],a:["Skim the list of banned actions.","मना की गई बातों की सूची देख लें।"]}];
+const W={H:10,M:5,L:2},LK={H:"hi",M:"me",L:"lo"};
+const S={lang:"en",tab:"home",text:"",res:null,filter:null,old:"",nw:"",cmp:null,hexp:false};
+try{S.lang=sessionStorage.getItem("cc_lang")||"en"}catch(e){}
+const t=k=>D[S.lang][k],i=()=>S.lang==="hi"?1:0,$=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const SA="Our app collects your personal information, including your location and browsing history.\nWe may share your personal information with selected advertising partners and third parties.\nYour subscription renews automatically each month until you cancel.\nFees are non-refundable once the billing period has started.\nWe may suspend or terminate your account at any time without notice.\nAny dispute must be resolved through binding arbitration; you waive the right to a class action.\nThe company is not liable for any damages arising from use of the service.";
+const SO="We collect your email address and basic usage data.\nWe do not share your personal information with advertising partners.\nYour subscription must be renewed manually.\nRefunds are available within 14 days of purchase.\nWe may suspend your account after 30 days of notice.\nDisputes are handled in the courts of your home country.";
+function paras(x){return x.split(/\n+/).map(s=>s.trim()).filter(s=>s.length>12)}
+function cats(p){return C.filter(c=>c.re.test(p))}
+function analyze(x){const r=[];paras(x).forEach((p,k)=>{cats(p).slice(0,1).forEach(c=>r.push({p,c,k:k+1}))});
+ const n={H:0,M:0,L:0};r.forEach(a=>n[a.c.l]++);return{r,n,score:Math.min(100,n.H*15+n.M*7+n.L*3)}}
+function pie(n){const T=n.H+n.M+n.L||1,a=n.H/T*360,b=a+n.M/T*360;return`conic-gradient(var(--rd) 0 ${a}deg,var(--or) ${a}deg ${b}deg,var(--mn) ${b}deg 360deg)`}
+function setLang(l){S.lang=l;document.documentElement.lang=l;try{sessionStorage.setItem("cc_lang",l)}catch(e){}render()}
+function go(tb){S.tab=tb;render();window.scrollTo(0,0)}
+function nav(){$("#nav").innerHTML=`<b>🛡️ ${t("brand")}</b>`+["home","an","cmp"].map(k=>`<button class="g ${S.tab===k?"on":""}" onclick="go('${k}')">${t(k)}</button>`).join("")+`<button class="g ${S.lang==="en"?"on":""}" onclick="setLang('en')" aria-label="English">🇬🇧 EN</button><button class="g ${S.lang==="hi"?"on":""}" onclick="setLang('hi')" aria-label="हिंदी">🇮🇳 हिंदी</button>`}
+function clauseCard(a){const c=a.c,I=i();return`<div class="card cl ${c.l}"><span class="pill ${c.l}">${t(LK[c.l])}</span> <b>${c.n[I]}</b> <span class="mu sm">· ${t("section")} ${a.k}</span>
+<blockquote>${esc(a.p)}</blockquote><p class="sm"><b>${t("ex")}:</b> ${c.x[I]}</p><p class="sm"><b>${t("action")}:</b> ${c.a[I]}</p>
+<div class="row"><button class="g sm" onclick="navigator.clipboard&&navigator.clipboard.writeText(${esc(JSON.stringify(c.n[I]+": "+c.x[I]))})">⧉ Copy</button></div></div>`}
+function viewAnalyze(){const R=S.res;let h=`<h2>${t("an")}</h2><p class="mu sm">${t("pdfn")}</p><textarea id="ta" placeholder="${t("paste")}" aria-label="${t("paste")}">${esc(S.text)}</textarea>
+<div class="row" style="margin:.7rem 0"><button onclick="runA()">${t("go")}</button><button class="g" onclick="S.text=SA;render()">${t("sample")}</button><label class="g" style="padding:.65em 1.1em;border:1px solid var(--bd);border-radius:12px;cursor:pointer">${t("upload")}<input type="file" accept=".txt,.pdf,.docx" hidden onchange="upl(this)"></label></div><div id="msg" role="status"></div>`;
+ if(R){const f=S.filter,list=R.r.filter(a=>!f||a.c.id===f),by=C.map(c=>({c,n:R.r.filter(a=>a.c.id===c.id).length})).filter(x=>x.n),mx=Math.max(1,...by.map(x=>x.n));
+ const top=[...R.r].sort((a,b)=>W[b.c.l]-W[a.c.l]).slice(0,5);
+ h+=`<div class="grid"><div class="card"><div class="mu">${t("score")}</div><div class="big">${R.score}<span class="sm mu">/100</span></div></div><div class="card"><div class="mu">${t("clauses")}</div><div class="big">${R.r.length}</div><span class="pill H">${t("hi")} ${R.n.H}</span> <span class="pill M">${t("me")} ${R.n.M}</span> <span class="pill L">${t("lo")} ${R.n.L}</span></div><div class="card"><div class="pie" style="background:${pie(R.n)}" role="img" aria-label="risk distribution"></div></div></div>
+ <div class="card" style="margin:1rem 0"><b>${t("cats")}</b>${by.map(x=>`<button class="bar ${f===x.c.id?"on":""}" onclick="S.filter=${f===x.c.id?"null":`'${x.c.id}'`};render()"><span>${x.c.n[i()]}</span><i style="width:${x.n/mx*50}%"></i><span>${x.n}</span></button>`).join("")||`<p class="mu">${t("empty")}</p>`}${f?`<button class="g" onclick="S.filter=null;render()">${t("all")}</button>`:""}</div>
+ ${f?"":`<h3>${t("top")}</h3>`+top.map(clauseCard).join("")+"<hr>"}${f?list.map(clauseCard).join(""):R.r.map(clauseCard).join("")}`}
+ return h}
+function runA(){const x=$("#ta").value;S.text=x;if(!x.trim()){$("#msg").textContent=t("none");return}
+ $("#msg").innerHTML='<div class="scan"></div>';setTimeout(()=>{S.res=analyze(x);S.filter=null;render()},500)}
+function upl(el){const f=el.files[0];if(!f)return;if(!/\.txt$/i.test(f.name)){$("#msg").textContent=t("pdfn");return}const r=new FileReader();r.onload=()=>{S.text=String(r.result);render()};r.readAsText(f)}
+const tok=s=>new Set(s.toLowerCase().match(/[\p{L}\p{N}]+/gu)||[]);
+function sim(a,b){const A=tok(a),B=tok(b);let n=0;A.forEach(w=>B.has(w)&&n++);return n/(A.size+B.size-n||1)}
+const NEG=/\b(do not|does not|never|will not|won’t|won't|not)\b/i;
+function risk(p){const c=cats(p)[0];if(!c)return 0;return NEG.test(p)&&c.id==="share"?0:W[c.l]}
+function diff(a,b){const A=a.split(/\s+/),B=b.split(/\s+/),sa=new Set(A.map(w=>w.toLowerCase())),sb=new Set(B.map(w=>w.toLowerCase()));
+ return{o:A.map(w=>sb.has(w.toLowerCase())?esc(w):`<del>${esc(w)}</del>`).join(" "),n:B.map(w=>sa.has(w.toLowerCase())?esc(w):`<ins>${esc(w)}</ins>`).join(" ")}}
+function compare(o,n){const O=paras(o),N=paras(n),used=new Set(),out={add:[],rem:[],mod:[]};
+ N.forEach(p=>{let best=-1,bs=0;O.forEach((q,k)=>{if(used.has(k))return;const s=sim(p,q);if(s>bs){bs=s;best=k}});
+  if(bs>=.95){used.add(best)}else if(bs>=.4){used.add(best);out.mod.push({o:O[best],n:p,s:bs})}else out.add.push({n:p})});
+ O.forEach((q,k)=>{if(!used.has(k))out.rem.push({o:q})});
+ const sc=a=>Math.min(100,a.reduce((s,p)=>s+risk(p)*1.5,0)|0);return{...out,os:sc(O),ns:sc(N),O,N}}
+function expl(it,kind){const I=i(),c=cats(it.n||it.o)[0];let ro=it.o?risk(it.o):0,rn=it.n?risk(it.n):0,d=rn-ro;
+ const nm=c?c.n[I]:(I?"सामान्य शर्त":"General term");const tx=I?(kind==="add"?`नई शर्त जुड़ी: ${nm}।`:kind==="rem"?`पुरानी शर्त हटी: ${nm}।`:`शर्त बदली: ${nm}।`):(kind==="add"?`New clause: ${nm}.`:kind==="rem"?`Removed clause: ${nm}.`:`Changed clause: ${nm}.`);
+ const rc=kind==="add"?rn:kind==="rem"?-ro:d;return{tx:tx+(c?" "+c.x[I]:""),up:rc>0,dn:rc<0}}
+function cmpCard(it,kind){const e=expl(it,kind),cls={add:"add",rem:"rem",mod:"mod"}[kind],L=t(kind==="add"?"added":kind==="rem"?"removed":"modified");
+ let body=kind==="mod"?(d=>`<div class="cols"><div><b class="sm">${t("old")}</b><blockquote>${d.o}</blockquote></div><div><b class="sm">${t("new")}</b><blockquote>${d.n}</blockquote></div></div>`)(diff(it.o,it.n)):`<blockquote>${esc(it.n||it.o)}</blockquote>`;
+ return`<div class="card ${cls}" style="margin:.7rem 0;border-width:2px"><b>${L}</b> ${e.up?`<span class="pill H">${t("up")}</span>`:e.dn?`<span class="pill L">${t("down")}</span>`:""}${body}${S.hexp?`<p class="sm">${e.tx}</p>`:""}</div>`}
+function viewCompare(){let h=`<h2>${t("cmp")}</h2><div class="cols"><div><b>${t("old")}</b><textarea id="to">${esc(S.old)}</textarea></div><div><b>${t("new")}</b><textarea id="tn">${esc(S.nw)}</textarea></div></div>
+<div class="row" style="margin:.7rem 0"><button onclick="runC()">${t("cgo")}</button><button class="g" onclick="S.old=SO;S.nw=SA;render()">${t("sample")}</button></div><div id="msg" role="status"></div>`;
+ const R=S.cmp;if(R){const nh=R.add.filter(a=>risk(a.n)>=10).length,rd=R.rem.filter(a=>risk(a.o)>0).length+R.mod.filter(m=>risk(m.n)<risk(m.o)).length,dl=R.ns-R.os;
+ h+=`<div class="grid"><div class="card"><div class="mu">${t("oldS")}</div><div class="big">${R.os}</div></div><div class="card"><div class="mu">${t("newS")}</div><div class="big">${R.ns}</div><span class="pill ${dl>0?"H":dl<0?"L":"M"}">${dl>0?t("up"):dl<0?t("down"):t("same")}</span></div>
+ <div class="card"><div class="mu">${t("sum")}</div><div>${t("added")}: <b>${R.add.length}</b></div><div>${t("removed")}: <b>${R.rem.length}</b></div><div>${t("modified")}: <b>${R.mod.length}</b></div><div>${t("newHigh")}: <b>${nh}</b></div><div>${t("reduced")}: <b>${rd}</b></div></div></div>
+ <div class="card" style="margin:1rem 0">${[["oldS",R.os],["newS",R.ns]].map(([k,v])=>`<div class="bar" style="cursor:default"><span>${t(k)}</span><i style="width:${v/100*60}%;background:${k==="newS"&&v>R.os?"var(--rd)":"var(--bl)"}"></i><span>${v}</span></div>`).join("")}</div>
+ <button class="${S.hexp?"on":""}" onclick="S.hexp=!S.hexp;render()">🇮🇳 ${t("hexp")}</button> ${S.hexp?`<span class="sm mu">${t("hexpOn")}</span>`:""}<p class="sm mu">${t("unc")}</p>
+ ${R.add.map(x=>cmpCard(x,"add")).join("")}${R.mod.map(x=>cmpCard(x,"mod")).join("")}${R.rem.map(x=>cmpCard(x,"rem")).join("")}`}
+ return h}
+function runC(){S.old=$("#to").value;S.nw=$("#tn").value;if(!S.old.trim()||!S.nw.trim()){$("#msg").textContent=t("none");return}
+ $("#msg").innerHTML='<div class="scan"></div>';setTimeout(()=>{S.cmp=compare(S.old,S.nw);render()},500)}
+function viewHome(){return`<section class="hero"><div class="shield">🛡️</div><h1>${t("h1")}</h1><p>${t("sub")}</p><div class="row"><button onclick="go('an')">${t("b1")}</button><button style="background:var(--lv)" onclick="go('cmp')">${t("b2")}</button><button class="g" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">${t("b3")}</button></div></section>
+<section id="how" class="grid">${t("how").map((x,k)=>`<div class="card"><b>${["📄","🔍","🇮🇳"][k]}</b><p>${x}</p></div>`).join("")}</section>`}
+function render(){nav();const y=window.scrollY;$("#app").innerHTML=({home:viewHome,an:viewAnalyze,cmp:viewCompare})[S.tab]()+`<footer class="card sm mu">⚖️ ${t("disc")}</footer>`;}
+document.documentElement.lang=S.lang;render();
+</script></body></html>
